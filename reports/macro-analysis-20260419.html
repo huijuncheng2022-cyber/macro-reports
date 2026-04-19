@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宏观形势分析报告 · 2026年4月19日</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-sub: #f7f8fa;
+      --bg-card: #f0f2f5;
+      --border: #e2e5ea;
+      --text: #1a1a2e;
+      --text-sub: #5a5f72;
+      --text-muted: #9096a6;
+      --blue: #2563eb;
+      --blue-light: #eff4ff;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --orange: #ea580c;
+      --cyan: #0891b2;
+    }
+    @page { size: A4; margin: 14mm 12mm; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65; font-size: 13px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+
+    /* ── Print pagination ── */
+    .page-break { break-before: page; }
+    .no-break { break-inside: avoid; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center; padding: 36px 0 28px; margin-bottom: 32px;
+      border-bottom: 2px solid var(--blue);
+    }
+    .header h1 { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: 1px; }
+    .header .sub { font-size: 13px; color: var(--text-sub); margin-top: 4px; letter-spacing: 1px; }
+    .header .date {
+      display: inline-block; margin-top: 12px; padding: 3px 14px;
+      background: var(--blue-light); border: 1px solid #c7d8fc; border-radius: 16px;
+      font-size: 12px; color: var(--blue); font-family: 'SF Mono','Fira Code',monospace;
+    }
+    .header .alert {
+      display: inline-block; margin-top: 8px; padding: 4px 14px;
+      background: var(--red-light); border: 1px solid #fca5a5; border-radius: 16px;
+      font-size: 11px; color: var(--red); font-weight: 600;
+    }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 36px; }
+    .s-title {
+      font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--blue);
+      display: flex; align-items: center; gap: 8px; color: var(--text);
+    }
+    .s-title .n {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; background: var(--blue); color: #fff;
+      font-size: 12px; font-weight: 700; border-radius: 5px; flex-shrink: 0;
+    }
+
+    /* ── Indicators ── */
+    .cat { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; margin: 14px 0 6px 2px; }
+    .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 700px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ind {
+      background: var(--bg-sub); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; break-inside: avoid;
+    }
+    .ind .lbl { font-size: 11px; color: var(--text-muted); }
+    .ind .val { font-size: 17px; font-weight: 700; font-family: 'SF Mono','Fira Code',monospace; margin: 2px 0; }
+    .ind .chg {
+      display: inline-block; font-size: 11px; font-family: 'SF Mono','Fira Code',monospace;
+      padding: 1px 6px; border-radius: 3px;
+    }
+    .chg-up { background: var(--red-light); color: var(--red); }
+    .chg-dn { background: var(--green-light); color: var(--green); }
+    .chg-fl { background: var(--yellow-light); color: var(--yellow); }
+
+    /* ── Chain blocks ── */
+    .chain { background: var(--bg-sub); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; break-inside: avoid; overflow: hidden; }
+    .chain-hd {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--bg);
+    }
+    .chain-hd .ico {
+      width: 30px; height: 30px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+    }
+    .ico-geo { background: var(--red-light); }
+    .ico-pol { background: var(--blue-light); }
+    .ico-trd { background: var(--purple-light); }
+    .chain-hd h3 { font-size: 14px; font-weight: 700; }
+    .chain-hd .tag { font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+    .tg-geo { background: var(--red-light); color: var(--red); }
+    .tg-pol { background: var(--blue-light); color: var(--blue); }
+    .tg-trd { background: var(--purple-light); color: var(--purple); }
+
+    .chain-bd { padding: 14px 18px; }
+    .narr { font-size: 13px; color: var(--text-sub); line-height: 1.8; margin-bottom: 12px; }
+    .narr strong { color: var(--text); }
+
+    /* Flow arrows */
+    .flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin: 10px 0; }
+    .fnode {
+      flex: 1 1 0; min-width: 80px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 5px; padding: 7px 8px; text-align: center;
+    }
+    .fnode .fl { font-size: 10px; color: var(--text-muted); }
+    .fnode .fv { font-size: 12px; font-weight: 700; font-family: 'SF Mono','Fira Code',monospace; }
+    .farr { display: flex; align-items: center; justify-content: center; width: 24px; flex-shrink: 0; color: var(--text-muted); font-size: 13px; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px; font-size: 11px;
+      padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg);
+    }
+    .badge .bu { color: var(--red); font-weight: 700; }
+    .badge .bd { color: var(--green); font-weight: 700; }
+    .badge .bf { color: var(--yellow); font-weight: 700; }
+
+    .warn-note { margin-top: 10px; font-size: 12px; color: var(--orange); line-height: 1.6; }
+    .warn-note strong { color: var(--red); }
+
+    /* ── Table ── */
+    .tw { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    thead th {
+      background: var(--bg-sub); padding: 9px 12px; text-align: left;
+      font-weight: 600; font-size: 11px; color: var(--text-sub);
+      border-bottom: 2px solid var(--border); white-space: nowrap;
+    }
+    tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr { break-inside: avoid; }
+    .an { font-weight: 600; white-space: nowrap; }
+    .lv { font-family: 'SF Mono','Fira Code',monospace; font-weight: 600; }
+    .bt { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+    .bt-up { background: var(--red-light); color: var(--red); }
+    .bt-dn { background: var(--green-light); color: var(--green); }
+    .bt-fl { background: var(--yellow-light); color: var(--yellow); }
+    .tgh td { background: var(--blue-light); font-weight: 700; font-size: 11px; color: var(--blue); letter-spacing: 1px; padding: 6px 12px; }
+    .dc { display: flex; align-items: center; flex-wrap: wrap; gap: 0; font-size: 11px; color: var(--text-sub); }
+    .dc .di { white-space: nowrap; }
+    .dc .da { margin: 0 4px; color: var(--text-muted); font-size: 9px; }
+
+    /* ── Timeline ── */
+    .tl { position: relative; padding-left: 24px; }
+    .tl::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+    .tli { position: relative; margin-bottom: 14px; padding: 10px 14px; background: var(--bg-sub); border: 1px solid var(--border); border-radius: 7px; break-inside: avoid; }
+    .tli::before { content: ''; position: absolute; left: -22px; top: 14px; width: 8px; height: 8px; background: var(--blue); border-radius: 50%; border: 2px solid var(--bg); }
+    .tli.hot { border-left: 3px solid var(--red); }
+    .tli.hot::before { background: var(--red); }
+    .tli .td { font-size: 11px; color: var(--blue); font-family: 'SF Mono','Fira Code',monospace; margin-bottom: 2px; }
+    .tli .tt { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .tli .tx { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+
+    /* ── Scenarios ── */
+    .sc { background: var(--bg-sub); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; break-inside: avoid; overflow: hidden; }
+    .sc-hd { display: flex; align-items: center; gap: 8px; padding: 11px 16px; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .sc-hd .si { width: 28px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .si-base { background: var(--blue-light); }
+    .si-risk { background: var(--red-light); }
+    .si-bull { background: var(--green-light); }
+    .sc-hd h4 { font-size: 14px; font-weight: 700; }
+    .sc-hd .prob { margin-left: auto; font-size: 11px; font-family: 'SF Mono','Fira Code',monospace; padding: 2px 8px; border-radius: 3px; border: 1px solid var(--border); color: var(--text-sub); }
+    .sc-bd { padding: 14px 16px; }
+    .sc-bd .prem { font-size: 12px; color: var(--text-sub); margin-bottom: 10px; line-height: 1.7; }
+    .sc-bd .prem strong { color: var(--text); }
+    .sig { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    @media (max-width: 600px) { .sig { grid-template-columns: 1fr; } }
+    .sib { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; }
+    .sib h5 { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 5px; letter-spacing: 1px; }
+    .sib ul { list-style: none; padding: 0; }
+    .sib li { font-size: 11px; color: var(--text-sub); padding: 2px 0 2px 12px; position: relative; }
+    .sib li::before { position: absolute; left: 0; font-weight: 700; font-size: 10px; }
+    .sib.pos li::before { content: '▲'; color: var(--red); }
+    .sib.neg li::before { content: '▼'; color: var(--green); }
+    .sib.mix li::before { content: '◆'; color: var(--yellow); }
+
+    .verdict { margin-top: 16px; padding: 16px 18px; background: var(--bg-sub); border: 1px solid var(--border); border-radius: 10px; break-inside: avoid; }
+    .verdict h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+    .vg { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px; }
+    .vi { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 5px; }
+    .vi .vn { color: var(--text-sub); }
+    .vi .vc { font-weight: 700; margin-left: auto; }
+    .vc-up { color: var(--red); }
+    .vc-dn { color: var(--green); }
+    .vc-fl { color: var(--yellow); }
+    .vnote { margin-top: 10px; font-size: 11px; color: var(--text-muted); }
+
+    .footer { text-align: center; padding: 24px 0; margin-top: 32px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-muted); }
+    .footer span { color: var(--blue); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 宏观形势分析报告</h1>
+  <div class="sub">MACRO LANDSCAPE BRIEFING</div>
+  <div class="date">2026-04-19 SUN · 数据截至 04.17 收盘</div>
+  <div class="alert">⚡ 本周核心：霍尔木兹海峡"开—关"反转 · 美股连创新高 · 关税退还1660亿美元</div>
+</div>
+
+<div class="container">
+
+<!-- ═══ 1 · 关键指标速览 ═══ -->
+<div class="section no-break">
+  <div class="s-title"><span class="n">1</span> 关键指标速览</div>
+
+  <div class="cat">💱 货币 / 汇率 / 债券</div>
+  <div class="ind-grid">
+    <div class="ind"><div class="lbl">美元指数 DXY</div><div class="val">98.10</div><span class="chg chg-dn">▼ -0.9% 周</span></div>
+    <div class="ind"><div class="lbl">USD/CNH</div><div class="val">7.21</div><span class="chg chg-dn">▼ 小幅走强</span></div>
+    <div class="ind"><div class="lbl">10Y 美债</div><div class="val">4.06%</div><span class="chg chg-dn">▼ -20bp月</span></div>
+    <div class="ind"><div class="lbl">联邦基金利率</div><div class="val">3.50-3.75%</div><span class="chg chg-fl">— 持平</span></div>
+  </div>
+
+  <div class="cat">🛢 大宗商品</div>
+  <div class="ind-grid">
+    <div class="ind"><div class="lbl">黄金 XAU</div><div class="val">$4,788</div><span class="chg chg-up">▲ 四周连涨</span></div>
+    <div class="ind"><div class="lbl">WTI 原油</div><div class="val">$84.68</div><span class="chg chg-dn">▼ -11.5% 周五</span></div>
+    <div class="ind"><div class="lbl">铜 LME</div><div class="val">$9,580/t</div><span class="chg chg-up">▲ +2.1% 周</span></div>
+  </div>
+
+  <div class="cat">🇨🇳 A股 / 港股</div>
+  <div class="ind-grid">
+    <div class="ind"><div class="lbl">沪深300</div><div class="val">4,729</div><span class="chg chg-dn">▼ -0.17% 周五</span></div>
+    <div class="ind"><div class="lbl">创业板指</div><div class="val">3,678</div><span class="chg chg-up">▲ 近11年新高</span></div>
+    <div class="ind"><div class="lbl">科创50</div><div class="val">1,423</div><span class="chg chg-up">▲ +0.08%</span></div>
+    <div class="ind"><div class="lbl">恒生科技</div><div class="val">5,220</div><span class="chg chg-up">▲ 周+2.8%</span></div>
+  </div>
+
+  <div class="cat">🇺🇸 美股</div>
+  <div class="ind-grid">
+    <div class="ind"><div class="lbl">标普500</div><div class="val">7,126</div><span class="chg chg-up">▲ 连续三日新高</span></div>
+    <div class="ind"><div class="lbl">纳斯达克</div><div class="val">24,468</div><span class="chg chg-up">▲ 13连阳</span></div>
+    <div class="ind"><div class="lbl">道琼斯</div><div class="val">49,469</div><span class="chg chg-up">▲ +1.79% 周五</span></div>
+  </div>
+</div>
+
+<!-- ═══ 2 · 宏观传导链路 ═══ -->
+<div class="section">
+  <div class="s-title"><span class="n">2</span> 宏观传导链路——三条主线如何联动</div>
+
+  <!-- Chain A -->
+  <div class="chain no-break">
+    <div class="chain-hd">
+      <div class="ico ico-geo">🔥</div>
+      <h3>链路 A &nbsp;霍尔木兹反转 → 油价剧震 → 通胀预期分裂 → 政策不确定性</h3>
+      <span class="tag tg-geo">核心主线</span>
+    </div>
+    <div class="chain-bd">
+      <div class="narr">本周地缘局势经历"冰火两重天"：4月17日周五，伊朗宣布霍尔木兹海峡<strong>重新开放</strong>商业通航，特朗普表态"和平协议不远了"，WTI暴跌11.5%至<strong>$84.68</strong>，美股集体狂欢。然而仅一天后（4月18日周六），伊朗军方宣布海峡"<strong>恢复此前状态</strong>"——即再度关闭，指控美方在海峡维持封锁违反承诺。油价周一开盘面临巨大跳空风险。核心逻辑：<strong>海峡真正持续开放 → 油价跌至$80以下 → 通胀预期降温 → 降息窗口打开</strong>。但海峡反复关闭 → 油价反弹$95+ → 通胀压力重燃。</div>
+      <div class="flow">
+        <div class="fnode"><div class="fl">4/17</div><div class="fv" style="color:var(--green)">海峡开放</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">WTI</div><div class="fv" style="color:var(--green)">$96→$84.68</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">4/18</div><div class="fv" style="color:var(--red)">海峡再关</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">油价预期</div><div class="fv" style="color:var(--red)">↑ 跳空风险</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">通胀路径</div><div class="fv" style="color:var(--yellow)">? 高度不确定</div></div>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="bu">▲</span> 黄金（不确定性=避险）</span>
+        <span class="badge"><span class="bf">◆</span> 全球股市（周一波动加剧）</span>
+        <span class="badge"><span class="bf">◆</span> WTI（$84↔$95反复）</span>
+        <span class="badge"><span class="bd">▼</span> 航运/航空（成本不可预测）</span>
+      </div>
+      <div class="warn-note">⚠ <strong>关键节点：</strong>下周一（4/21）巴基斯坦美伊新一轮谈判 + 黎以停火到期。海峡开关状态将在48小时内决定本周全球市场方向。若谈判破裂且停火到期无续约，链路A全面翻转——油价冲$100+、通胀升温、降息延后。</div>
+    </div>
+  </div>
+
+  <!-- Chain B -->
+  <div class="chain no-break">
+    <div class="chain-hd">
+      <div class="ico ico-pol">💰</div>
+      <h3>链路 B &nbsp;联储按兵 + 关税退还 → 财政重压 → 美元走弱 → 估值修复</h3>
+      <span class="tag tg-pol">估值锚</span>
+    </div>
+    <div class="chain-bd">
+      <div class="narr">美联储维持<strong>3.50-3.75%</strong>不变，4/29 FOMC预期按兵不动。3月CPI报<strong>3.3%</strong>（核心CPI仅2.6%，能源分项+10.9%），结构性通胀温和但headline被能源推高。本周另一重大变量：美最高法院2月裁定IEEPA关税违宪后，美国政府开始<strong>退还1660亿美元关税</strong>（约1.1万亿人民币），对财政赤字构成额外压力。Warsh美联储主席提名听证会因伊朗局势推迟。<strong>财政压力+弱通胀核心 → 美元持续走弱 → DXY跌破98 → 新兴市场+大宗受益</strong>。</div>
+      <div class="flow">
+        <div class="fnode"><div class="fl">CPI 3.3%</div><div class="fv">核心仅2.6%</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">联储</div><div class="fv">按兵不动</div></div>
+        <div class="farr">+</div>
+        <div class="fnode"><div class="fl">关税退还</div><div class="fv" style="color:var(--red)">$1660亿</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">财政赤字</div><div class="fv" style="color:var(--red)">↑ 承压</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">DXY</div><div class="fv" style="color:var(--green)">↓ 跌破98</div></div>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="bu">▲</span> 纳斯达克（折现率↓+AI景气）</span>
+        <span class="badge"><span class="bu">▲</span> 创业板/科创50</span>
+        <span class="badge"><span class="bu">▲</span> 黄金（弱美元+实际利率↓）</span>
+        <span class="badge"><span class="bu">▲</span> 铜·大宗（弱美元推升）</span>
+        <span class="badge"><span class="bd">▼</span> 美元（DXY趋势走弱至96-98）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chain C -->
+  <div class="chain no-break">
+    <div class="chain-hd">
+      <div class="ico ico-trd">🔗</div>
+      <h3>链路 C &nbsp;关税裁决重塑 + 301调查启动 → 贸易规则转换 → 板块分化</h3>
+      <span class="tag tg-trd">结构线</span>
+    </div>
+    <div class="chain-bd">
+      <div class="narr">最高法院裁定IEEPA关税违宪后，白宫转向<strong>《贸易法》301条款</strong>启动新调查（3月12日USTR公告），瞄准制造业产能过剩。同时对十多个贸易伙伴启动301调查以替代原有全球关税。中美<strong>巴黎经贸磋商</strong>形成新共识，中方敦促美方彻底取消单边关税。5月14日中美峰会窗口临近。此链路与前两条交叉：<strong>关税退还短期利好进口商→消费提振；但301替代关税中期风险→特定板块承压；中美缓和预期→恒生科技/A股整体风险溢价↓</strong>。</div>
+      <div class="flow">
+        <div class="fnode"><div class="fl">IEEPA关税</div><div class="fv" style="color:var(--green)">违宪裁决</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">退还$1660亿</div><div class="fv" style="color:var(--green)">利好进口商</div></div>
+        <div class="farr">⇄</div>
+        <div class="fnode"><div class="fl">301调查启动</div><div class="fv" style="color:var(--yellow)">替代关税</div></div>
+        <div class="farr">→</div>
+        <div class="fnode"><div class="fl">5/14峰会</div><div class="fv" style="color:var(--blue)">窗口临近</div></div>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="bu">▲</span> 进口商·消费板块（退税红利）</span>
+        <span class="badge"><span class="bu">▲</span> 恒生科技（中美缓和预期）</span>
+        <span class="badge"><span class="bf">◆</span> 出口制造（301替代关税不确定）</span>
+        <span class="badge"><span class="bu">▲</span> 科创50·半导体（自主可控强化）</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 3 · 资产分析表 ═══ -->
+<div class="section page-break">
+  <div class="s-title"><span class="n">3</span> 资产分析表</div>
+  <div class="tw">
+    <table>
+      <thead><tr><th style="width:100px">资产</th><th style="width:80px">水平</th><th>传导链路 → 核心驱动</th><th style="width:80px">判断</th></tr></thead>
+      <tbody>
+        <tr class="tgh"><td colspan="4">💱 货币 / 汇率 / 债券</td></tr>
+        <tr><td class="an">美元指数</td><td class="lv">98.10</td><td><div class="dc"><span class="di">财政压力+关税退还</span><span class="da">+</span><span class="di">核心CPI温和</span><span class="da">→</span><span class="di">联储偏鸽</span><span class="da">→</span><span class="di" style="color:var(--green);font-weight:600">DXY趋弱</span></div></td><td><span class="bt bt-dn">偏空</span></td></tr>
+        <tr><td class="an">USD/CNH</td><td class="lv">7.21</td><td><div class="dc"><span class="di">DXY↓</span><span class="da">+</span><span class="di">中美缓和预期</span><span class="da">+</span><span class="di">央行引导</span><span class="da">→</span><span class="di" style="color:var(--green);font-weight:600">CNH小幅走强</span></div></td><td><span class="bt bt-dn">CNH偏强</span></td></tr>
+        <tr><td class="an">10Y 美债</td><td class="lv">4.06%</td><td><div class="dc"><span class="di">核心CPI 2.6%温和</span><span class="da">+</span><span class="di">联储按兵</span><span class="da">→</span><span class="di">收益率↓</span><span class="da">|</span><span class="di" style="color:var(--yellow)">关税退还→供给端压力</span></div></td><td><span class="bt bt-fl">震荡偏下</span></td></tr>
+
+        <tr class="tgh"><td colspan="4">🛢 大宗商品</td></tr>
+        <tr><td class="an">黄金</td><td class="lv">$4,788</td><td><div class="dc"><span class="di">DXY↓</span><span class="da">+</span><span class="di">海峡反转→不确定性↑</span><span class="da">+</span><span class="di">央行购金</span><span class="da">→</span><span class="di" style="color:var(--red);font-weight:600">四周连涨·逼近$4,800</span></div></td><td><span class="bt bt-up">偏多 ★</span></td></tr>
+        <tr><td class="an">WTI 原油</td><td class="lv">$84.68</td><td><div class="dc"><span class="di">周五海峡开→暴跌11%</span><span class="da">vs</span><span class="di" style="color:var(--red)">周六海峡关→周一跳空↑</span><span class="da">|</span><span class="di" style="color:var(--yellow)">$84-$100极端波动区间</span></div></td><td><span class="bt bt-fl">剧烈震荡</span></td></tr>
+        <tr><td class="an">铜 LME</td><td class="lv">$9,580/t</td><td><div class="dc"><span class="di">中国制造业+新能源</span><span class="da">+</span><span class="di">DXY↓</span><span class="da">→</span><span class="di" style="color:var(--red);font-weight:600">需求韧性支撑</span></div></td><td><span class="bt bt-up">偏多</span></td></tr>
+
+        <tr class="tgh"><td colspan="4">🇨🇳 A股 / 港股</td></tr>
+        <tr><td class="an">沪深300</td><td class="lv">4,729</td><td><div class="dc"><span class="di">上证4000站稳</span><span class="da">+</span><span class="di">成交2.3万亿</span><span class="da">+</span><span class="di">降准预期</span><span class="da">|</span><span class="di" style="color:var(--yellow)">4100关口待突破</span></div></td><td><span class="bt bt-up">震荡偏多</span></td></tr>
+        <tr><td class="an">创业板指</td><td class="lv">3,678</td><td><div class="dc"><span class="di">AI+新能源双主线爆发</span><span class="da">+</span><span class="di">红三兵周线</span><span class="da">→</span><span class="di" style="color:var(--red);font-weight:600">近11年新高</span></div></td><td><span class="bt bt-up">偏多 ★</span></td></tr>
+        <tr><td class="an">科创50</td><td class="lv">1,423</td><td><div class="dc"><span class="di">利率↓估值修复</span><span class="da">+</span><span class="di">半导体自主可控</span><span class="da">+</span><span class="di">AI算力</span><span class="da">→</span><span class="di" style="color:var(--red);font-weight:600">链路B+C交汇</span></div></td><td><span class="bt bt-up">偏多</span></td></tr>
+        <tr><td class="an">恒生科技</td><td class="lv">5,220</td><td><div class="dc"><span class="di">中美缓和预期</span><span class="da">+</span><span class="di">互联网+AI回暖</span><span class="da">+</span><span class="di">南向资金</span></div></td><td><span class="bt bt-up">偏多</span></td></tr>
+
+        <tr class="tgh"><td colspan="4">🇺🇸 美股</td></tr>
+        <tr><td class="an">标普500</td><td class="lv">7,126</td><td><div class="dc"><span class="di">连续三日新高</span><span class="da">+</span><span class="di">破7100首次</span><span class="da">|</span><span class="di" style="color:var(--yellow)">海峡反转→周一回调风险</span></div></td><td><span class="bt bt-fl">中性·待验</span></td></tr>
+        <tr><td class="an">纳斯达克</td><td class="lv">24,468</td><td><div class="dc"><span class="di">13连阳历史罕见</span><span class="da">+</span><span class="di">AI景气+利率↓</span><span class="da">|</span><span class="di" style="color:var(--yellow)">超买信号，技术回调随时</span></div></td><td><span class="bt bt-fl">偏多·超买</span></td></tr>
+        <tr><td class="an">道琼斯</td><td class="lv">49,469</td><td><div class="dc"><span class="di">周五+868点</span><span class="da">+</span><span class="di">油价暴跌利好工业</span><span class="da">|</span><span class="di" style="color:var(--yellow)">海峡再关=收益回吐</span></div></td><td><span class="bt bt-fl">中性偏多</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ 4 · 热点时间轴 ═══ -->
+<div class="section">
+  <div class="s-title"><span class="n">4</span> 热点时间轴（4.12 – 4.19）</div>
+  <div class="tl">
+    <div class="tli no-break"><div class="td">04-12 SAT</div><div class="tt">上期报告发布 · 美伊伊斯兰堡谈判21小时后破裂</div><div class="tx">核武条款分歧导致谈判破裂。风险情景概率从30%上调至40%。焦点转向停火到期。</div></div>
+    <div class="tli no-break"><div class="td">04-13 SUN</div><div class="tt">贝森特密集发言 · 关税退还进程推进</div><div class="tx">美财长出席Semafor世界经济峰会，就关税裁决后退还$1660亿事宜表态。</div></div>
+    <div class="tli hot no-break"><div class="td">04-14 MON</div><div class="tt">🔥 沪指重返4000点 · 创业板创阶段新高 · CNN：海峡封锁持续</div><div class="tx">上证+1.38%报4027。科创50+1.68%领涨。CNN报道少量船只通过海峡，美国封锁仍在。</div></div>
+    <div class="tli hot no-break"><div class="td">04-15 WED</div><div class="tt">🔥 S&P/纳斯达克双双创历史新高 · 关税退还正式启动</div><div class="tx">S&P 500与纳斯达克盘中创历史新高。财新报道最高法院裁决后美国开始退还全球关税。美对十多个贸易伙伴启动301调查。</div></div>
+    <div class="tli hot no-break"><div class="td">04-16 THU</div><div class="tt">🔥 创业板涨3.17%刷11年新高 · Warsh听证推迟 · CoreWeave+$60亿</div><div class="tx">上证报4056，创业板报3626。AI主线爆发——简街承诺$60亿使用CoreWeave AI云。Warsh美联储主席提名听证因局势推迟。北证50+4.77%。</div></div>
+    <div class="tli hot no-break"><div class="td">04-17 FRI</div><div class="tt">🔥🔥 伊朗宣布海峡开放 → 油价暴跌11% → 美股三大指数狂欢</div><div class="tx">WTI暴跌至$84.68。S&P 500报7126首破7100，纳斯达克13连阳至24468，道指+868点。特朗普称"和平不远了"。</div></div>
+    <div class="tli hot no-break"><div class="td">04-18 SAT</div><div class="tt">⚡ 剧情反转！伊朗军方宣布海峡"恢复此前状态"</div><div class="tx">伊朗指控美方维持封锁违反协议，重新关闭海峡并向过往船只开火。周一全球市场面临巨大波动风险。下周一巴基斯坦新谈判是最后窗口。</div></div>
+  </div>
+</div>
+
+<!-- ═══ 5 · 情景推演与策略 ═══ -->
+<div class="section page-break">
+  <div class="s-title"><span class="n">5</span> 情景推演与策略判断</div>
+
+  <div class="sc no-break">
+    <div class="sc-hd"><div class="si si-base">📐</div><h4>基准情景：谈判修复海峡 · 联储4/29按兵 · 关税新框架过渡</h4><span class="prob">~35%</span></div>
+    <div class="sc-bd">
+      <div class="prem"><strong>前提：</strong>4/21巴基斯坦谈判取得进展，海峡恢复有条件通航；联储4/29维持利率不变、措辞关注能源通胀但不急于行动；301调查进入评估期，5/14峰会释放积极信号。</div>
+      <div class="sig">
+        <div class="sib pos"><h5>利好资产</h5><ul><li>黄金：弱美元+残留避险+央行购金，$4,800-5,000区间</li><li>创业板/科创50：AI+新能源双主线+流动性充裕</li><li>恒生科技：中美缓和预期提振</li><li>铜：制造业韧性+弱美元，$9,500-10,000</li></ul></div>
+        <div class="sib mix"><h5>承压 / 分化</h5><ul><li>WTI：海峡有条件开放→$82-92区间震荡</li><li>美股：周五涨幅部分回吐，纳斯达克技术超买</li><li>沪深300：4000-4100区间震荡整理</li><li>美元：DXY 96-99区间弱势运行</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc no-break">
+    <div class="sc-hd"><div class="si si-risk">⚠️</div><h4>风险情景：谈判破裂 · 海峡全面封锁 · 油价新一轮飙升</h4><span class="prob">~40%</span></div>
+    <div class="sc-bd">
+      <div class="prem"><strong>前提：</strong>4/21谈判无果，停火到期无续约；海峡长期封锁，伊朗向过往船只开火升级；油价冲$100-110；4月CPI反弹至3.6%以上；联储明确推迟降息；中美301调查加码。<br><strong>链路A全面翻转：</strong>油价↑ → 通胀↑ → 降息延后 → 美元反弹 → 全球风险资产承压。</div>
+      <div class="sig">
+        <div class="sib neg"><h5>承压资产</h5><ul><li>美股：周五涨幅全部回吐，S&P回调3-5%</li><li>创业板/科创50：外资避险流出</li><li>恒生科技：中概再承压</li><li>铜：需求预期↓ + 美元反弹</li></ul></div>
+        <div class="sib pos"><h5>避险受益</h5><ul><li>黄金：恐慌驱动冲$5,000+</li><li>原油：WTI重返$100-110</li><li>美元：避险回流，DXY反弹至100+</li><li>美债：避险需求推动收益率↓</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc no-break">
+    <div class="sc-hd"><div class="si si-bull">🚀</div><h4>乐观情景：美伊达成框架协议 · 油价回$75 · 中美突破</h4><span class="prob">~25%</span></div>
+    <div class="sc-bd">
+      <div class="prem"><strong>前提：</strong>美伊在核问题上取得实质性突破，达成框架协议；海峡永久开放，油价回落至$75-80；联储释放6月降息信号；5/14中美峰会达成贸易新框架，301调查暂缓。三链路全面共振。</div>
+      <div class="sig">
+        <div class="sib pos"><h5>全面受益</h5><ul><li>标普500：持续创新高，冲击7,300-7,500</li><li>纳斯达克/科创50：AI+降息双击</li><li>恒生科技：中概估值全面修复</li><li>创业板：突破4,000历史关口</li></ul></div>
+        <div class="sib neg"><h5>相对承压</h5><ul><li>黄金：避险消退，冲高回落至$4,500</li><li>原油：地缘溢价消失，回$75-80</li><li>美元：DXY跌至95以下</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict no-break">
+    <h4>📋 综合判断：当前市场核心矛盾与资产倾向</h4>
+    <div class="vg">
+      <div class="vi"><span class="vn">美元指数</span><span class="vc vc-dn">偏空</span></div>
+      <div class="vi"><span class="vn">USD/CNH</span><span class="vc vc-dn">CNH偏强</span></div>
+      <div class="vi"><span class="vn">10Y美债</span><span class="vc vc-fl">震荡偏下</span></div>
+      <div class="vi"><span class="vn">黄金</span><span class="vc vc-up">偏多 ★</span></div>
+      <div class="vi"><span class="vn">WTI原油</span><span class="vc vc-fl">剧烈震荡</span></div>
+      <div class="vi"><span class="vn">铜</span><span class="vc vc-up">偏多</span></div>
+      <div class="vi"><span class="vn">沪深300</span><span class="vc vc-up">震荡偏多</span></div>
+      <div class="vi"><span class="vn">创业板指</span><span class="vc vc-up">偏多 ★</span></div>
+      <div class="vi"><span class="vn">科创50</span><span class="vc vc-up">偏多</span></div>
+      <div class="vi"><span class="vn">恒生科技</span><span class="vc vc-up">偏多</span></div>
+      <div class="vi"><span class="vn">纳斯达克</span><span class="vc vc-fl">超买·待回调</span></div>
+      <div class="vi"><span class="vn">道琼斯</span><span class="vc vc-fl">中性偏多</span></div>
+      <div class="vi"><span class="vn">标普500</span><span class="vc vc-fl">中性·待验</span></div>
+    </div>
+    <div class="vnote">★ = 多情景下均有正向逻辑支撑 &nbsp;|&nbsp; <strong>本周核心变量：</strong>4/21巴基斯坦谈判→海峡开关状态 · 4/29 FOMC声明 · 5/14中美峰会预期<br>⚠ <strong>特别警示：</strong>风险情景概率40%为近期最高。海峡4/18再关+伊朗开火升级，周一全球市场面临显著跳空风险。建议控制仓位、预留现金应对波动。</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>本报告基于公开市场数据与新闻资讯整理，仅供参考，不构成投资建议</p>
+  <p style="margin-top:4px">Generated by <span>WorkBuddy</span> · 2026-04-19 11:00 CST</p>
+</div>
+
+</body>
+</html>
