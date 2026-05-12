@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宏观形势分析报告 · 2026年5月12日</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-sub: #f7f8fa;
+      --bg-card: #f0f2f5;
+      --border: #e2e5ea;
+      --text: #1a1a2e;
+      --text-sub: #5a5f72;
+      --text-muted: #9096a6;
+      --blue: #2563eb;
+      --blue-light: #eff4ff;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --orange: #ea580c;
+      --cyan: #0891b2;
+    }
+    @page { size: A4; margin: 14mm 12mm; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65; font-size: 13px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+    .page-break { break-before: page; }
+    .no-break { break-inside: avoid; }
+
+    /* Header */
+    .header {
+      text-align: center; padding: 36px 0 28px; margin-bottom: 32px;
+      border-bottom: 2px solid var(--blue);
+    }
+    .header h1 { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: 1px; }
+    .header .sub { font-size: 13px; color: var(--text-sub); margin-top: 4px; letter-spacing: 1px; }
+    .header .date {
+      display: inline-block; margin-top: 12px; padding: 3px 14px;
+      background: var(--blue-light); border: 1px solid #c7d8fc; border-radius: 16px;
+      font-size: 12px; color: var(--blue); font-family: 'SF Mono','Fira Code',monospace;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 36px; }
+    .s-title {
+      font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--blue);
+      display: flex; align-items: center; gap: 8px; color: var(--text);
+    }
+    .s-title .n {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; background: var(--blue); color: #fff;
+      font-size: 12px; font-weight: 700; border-radius: 5px; flex-shrink: 0;
+    }
+
+    /* Indicators */
+    .cat { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; margin: 14px 0 6px 2px; }
+    .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 700px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ind {
+      background: var(--bg-sub); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; break-inside: avoid;
+    }
+    .ind .lbl { font-size: 11px; color: var(--text-muted); }
+    .ind .val { font-size: 17px; font-weight: 700; font-family: 'SF Mono','Fira Code',monospace; margin: 2px 0; }
+    .ind .chg {
+      display: inline-block; font-size: 11px; font-family: 'SF Mono','Fira Code',monospace;
+      padding: 1px 6px; border-radius: 3px;
+    }
+    .chg-up { background: var(--red-light); color: var(--red); }
+    .chg-dn { background: var(--green-light); color: var(--green); }
+    .chg-fl { background: var(--yellow-light); color: var(--yellow); }
+
+    /* Chain blocks */
+    .chain { background: var(--bg-sub); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; break-inside: avoid; overflow: hidden; }
+    .chain-hd {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--bg);
+    }
+    .chain-hd .ico {
+      width: 30px; height: 30px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+    }
+    .ico-geo { background: var(--red-light); }
+    .ico-pol { background: var(--blue-light); }
+    .ico-trd { background: var(--purple-light); }
+    .chain-hd h3 { font-size: 14px; font-weight: 700; }
+    .chain-hd .tag { font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+    .tg-geo { background: var(--red-light); color: var(--red); }
+    .tg-pol { background: var(--blue-light); color: var(--blue); }
+    .tg-trd { background: var(--purple-light); color: var(--purple); }
+    .chain-body { padding: 16px 18px; }
+    .chain-body p { font-size: 13px; color: var(--text-sub); margin-bottom: 10px; }
+    .flow {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+      font-size: 12px; font-weight: 600; margin: 12px 0;
+    }
+    .flow .node {
+      background: var(--bg); border: 1px solid var(--border); padding: 4px 10px;
+      border-radius: 5px;
+    }
+    .flow .arrow { color: var(--text-muted); font-size: 14px; }
+    .impact {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;
+    }
+    .impact .pill {
+      font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600;
+    }
+    .pill-up { background: var(--red-light); color: var(--red); }
+    .pill-dn { background: var(--green-light); color: var(--green); }
+    .pill-neutral { background: var(--yellow-light); color: var(--yellow); }
+    .caveat {
+      font-size: 11px; color: var(--orange); background: #fff7ed;
+      border: 1px solid #fed7aa; border-radius: 5px; padding: 6px 10px; margin-top: 8px;
+    }
+
+    /* Asset table */
+    .asset-tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .asset-tbl th {
+      background: var(--bg-sub); border: 1px solid var(--border);
+      padding: 8px 10px; text-align: left; font-weight: 700; font-size: 11px;
+      color: var(--text-sub); letter-spacing: 0.5px;
+    }
+    .asset-tbl td {
+      border: 1px solid var(--border); padding: 8px 10px; vertical-align: top;
+    }
+    .asset-tbl tr:nth-child(even) { background: var(--bg-sub); }
+    .verdict-tag {
+      display: inline-block; font-size: 10px; padding: 2px 7px;
+      border-radius: 3px; font-weight: 700;
+    }
+    .vt-up { background: var(--red-light); color: var(--red); }
+    .vt-dn { background: var(--green-light); color: var(--green); }
+    .vt-flat { background: var(--yellow-light); color: var(--yellow); }
+
+    /* Timeline */
+    .tl { position: relative; padding-left: 24px; }
+    .tl::before {
+      content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 14px; break-inside: avoid; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -20px; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--blue);
+      background: #fff;
+    }
+    .tl-item.hot::before { background: var(--red); border-color: var(--red); }
+    .tl-date { font-size: 11px; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; }
+    .tl-text { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+    .tl-tag { font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: 600; margin-left: 6px; }
+
+    /* Scenario */
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 700px) { .scenario-grid { grid-template-columns: 1fr; } }
+    .scenario {
+      border: 1px solid var(--border); border-radius: 10px; padding: 16px;
+      break-inside: avoid; background: var(--bg);
+    }
+    .scenario.base { border-left: 4px solid var(--blue); }
+    .scenario.risk { border-left: 4px solid var(--red); }
+    .scenario.bull { border-left: 4px solid var(--green); }
+    .scenario h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .scenario .prob {
+      font-size: 20px; font-weight: 800; font-family: 'SF Mono','Fira Code',monospace;
+      margin-bottom: 8px;
+    }
+    .scenario .assume { font-size: 11px; color: var(--text-sub); margin-bottom: 8px; line-height: 1.5; }
+    .scenario .s-label { font-size: 10px; font-weight: 700; color: var(--text-muted); margin: 6px 0 3px; letter-spacing: 1px; }
+
+    /* Verdict panel */
+    .verdict {
+      background: var(--blue-light); border: 2px solid var(--blue);
+      border-radius: 12px; padding: 20px; margin-top: 20px; break-inside: avoid;
+    }
+    .verdict h3 { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+    .verdict p { font-size: 13px; color: var(--text); margin-bottom: 6px; line-height: 1.7; }
+    .verdict .highlight {
+      font-weight: 700; color: var(--blue);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; font-size: 11px; color: var(--text-muted);
+      padding-top: 20px; border-top: 1px solid var(--border); margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>宏观形势分析报告</h1>
+    <div class="sub">MACRO LANDSCAPE WEEKLY BRIEFING</div>
+    <div class="date">2026-05-12 (W20)</div>
+  </div>
+
+  <!-- 1. 关键指标速览 -->
+  <div class="section">
+    <div class="s-title"><span class="n">1</span>关键指标速览</div>
+
+    <div class="cat">货币 / 汇率 / 债券</div>
+    <div class="ind-grid">
+      <div class="ind no-break">
+        <div class="lbl">美元指数 (DXY)</div>
+        <div class="val">97.91</div>
+        <span class="chg chg-up">+0.07%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">USD/CNH 离岸人民币</div>
+        <div class="val">6.7935</div>
+        <span class="chg chg-dn">人民币升值</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">10Y 美债收益率</div>
+        <div class="val">4.41%</div>
+        <span class="chg chg-up">+6bp</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">联邦基金利率</div>
+        <div class="val">3.50-3.75%</div>
+        <span class="chg chg-fl">按兵不动</span>
+      </div>
+    </div>
+
+    <div class="cat">大宗商品</div>
+    <div class="ind-grid">
+      <div class="ind no-break">
+        <div class="lbl">黄金 (XAU/USD)</div>
+        <div class="val">$4,734</div>
+        <span class="chg chg-up">+0.4%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">WTI 原油</div>
+        <div class="val">$99.0</div>
+        <span class="chg chg-up">+0.4%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">布伦特原油</div>
+        <div class="val">$104.0</div>
+        <span class="chg chg-up">+1.2%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">LME 铜</div>
+        <div class="val">$13,920</div>
+        <span class="chg chg-up">+2.6% 逼近历史高</span>
+      </div>
+    </div>
+
+    <div class="cat">A 股 / 港股</div>
+    <div class="ind-grid">
+      <div class="ind no-break">
+        <div class="lbl">上证指数</div>
+        <div class="val">4,225</div>
+        <span class="chg chg-up">周涨1.65% · 11年新高</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">沪深300</div>
+        <div class="val">4,960</div>
+        <span class="chg chg-up">+0.16%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">科创50</div>
+        <div class="val">1,708</div>
+        <span class="chg chg-dn">-0.49%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">恒生科技</div>
+        <div class="val">5,109</div>
+        <span class="chg chg-up">+0.45%</span>
+      </div>
+    </div>
+
+    <div class="cat">美 股</div>
+    <div class="ind-grid">
+      <div class="ind no-break">
+        <div class="lbl">标普500</div>
+        <div class="val">7,413</div>
+        <span class="chg chg-up">+0.19% 创历史新高</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">纳斯达克</div>
+        <div class="val">26,274</div>
+        <span class="chg chg-up">+0.10% 创历史新高</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">道琼斯</div>
+        <div class="val">49,704</div>
+        <span class="chg chg-up">+0.19%</span>
+      </div>
+      <div class="ind no-break">
+        <div class="lbl">费城半导体</div>
+        <div class="val">12,000+</div>
+        <span class="chg chg-up">+2.59% 历史新高</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 宏观传导链路 -->
+  <div class="section">
+    <div class="s-title"><span class="n">2</span>宏观传导链路</div>
+
+    <!-- Chain A -->
+    <div class="chain no-break">
+      <div class="chain-hd">
+        <div class="ico ico-geo">🔥</div>
+        <h3>链路A · 中东地缘冲突 → 能源通胀 → 货币政策困境</h3>
+        <span class="tag tg-geo">触发层</span>
+      </div>
+      <div class="chain-body">
+        <p>美伊在霍尔木兹海峡的军事冲突反复升级又谈判，WTI油价在$95-$115区间剧烈震荡。本周油价从高位回落6%后再度反弹。高油价正通过汽油(突破$4.50/加仑)向美国核心CPI传导，3月CPI环比+0.9%(2022年6月以来最大)，今晚4月CPI预期环比+0.6%、同比升至3.7%。通胀黏性令美联储陷入困境：鲍威尔最后一次FOMC会议以8:4投票维持利率不变，创34年最大分歧。</p>
+        <div class="flow">
+          <span class="node">美伊冲突/霍尔木兹海峡</span>
+          <span class="arrow">→</span>
+          <span class="node">油价$99-104</span>
+          <span class="arrow">→</span>
+          <span class="node">汽油$4.50+/加仑</span>
+          <span class="arrow">→</span>
+          <span class="node">CPI同比3.3%→3.7%?</span>
+          <span class="arrow">→</span>
+          <span class="node">美联储无法降息</span>
+          <span class="arrow">→</span>
+          <span class="node">美债收益率高位</span>
+        </div>
+        <div class="impact">
+          <span class="pill pill-up">▲ 黄金</span>
+          <span class="pill pill-up">▲ 原油</span>
+          <span class="pill pill-dn">▼ 美元(法律风险)</span>
+          <span class="pill pill-neutral">◆ 美股(AI独立行情)</span>
+        </div>
+        <div class="caveat">⚠ 反转条件：若美伊30天内达成谅解备忘录，油价可能迅速跌至$80以下，通胀链路大幅弱化</div>
+      </div>
+    </div>
+
+    <!-- Chain B -->
+    <div class="chain no-break">
+      <div class="chain-hd">
+        <div class="ico ico-pol">💰</div>
+        <h3>链路B · 中国政策宽松 + 特朗普访华 → 风险偏好修复 → A股突破</h3>
+        <span class="tag tg-pol">传导层</span>
+      </div>
+      <div class="chain-body">
+        <p>5月7日央行宣布降准0.5%(释放~1万亿流动性) + 降息10bp(7天逆回购1.5%→1.4%)，5月20日LPR同步下调10bp(1Y 3%/5Y 3.5%)。叠加特朗普5月13-15日访华的重大地缘缓和信号，A股连续4天成交>3万亿，沪指突破4200创11年新高，创业板指突破3900创2015年6月以来新高。资金从防御(石油煤炭)大幅转向进攻(科技成长)。两融余额2.8万亿创历史新高。</p>
+        <div class="flow">
+          <span class="node">央行降准降息</span>
+          <span class="arrow">→</span>
+          <span class="node">流动性释放1万亿</span>
+          <span class="arrow">→</span>
+          <span class="node">LPR下调10bp</span>
+          <span class="arrow">→</span>
+          <span class="node">风险偏好回升</span>
+          <span class="arrow">→</span>
+          <span class="node">A股放量突破(日均3.16万亿)</span>
+        </div>
+        <div class="flow">
+          <span class="node">特朗普访华(5/13-15)</span>
+          <span class="arrow">→</span>
+          <span class="node">贸易关系缓和预期</span>
+          <span class="arrow">→</span>
+          <span class="node">人民币升值(6.79)</span>
+          <span class="arrow">→</span>
+          <span class="node">外资回流中国资产</span>
+        </div>
+        <div class="impact">
+          <span class="pill pill-up">▲ A股科技成长</span>
+          <span class="pill pill-up">▲ 港股科技</span>
+          <span class="pill pill-up">▲ 人民币</span>
+          <span class="pill pill-dn">▼ 美元指数</span>
+          <span class="pill pill-neutral">◆ 债券(利率下行)</span>
+        </div>
+        <div class="caveat">⚠ 反转条件：若访华期间贸易谈判破裂、301调查加码，风险偏好可能急剧回撤</div>
+      </div>
+    </div>
+
+    <!-- Chain C -->
+    <div class="chain no-break">
+      <div class="chain-hd">
+        <div class="ico ico-trd">🤖</div>
+        <h3>链路C · AI产业爆发 → 全球科技重估 → 铜/半导体超级周期</h3>
+        <span class="tag tg-trd">结构层</span>
+      </div>
+      <div class="chain-body">
+        <p>英伟达市值突破$5.3万亿创历史新高，费城半导体指数突破12000点。AI算力投资热潮驱动存储(西部数据+7%、美光+6%)、光通信(应用光电+24%)全面爆发。产业链延伸至铜(AI数据中心用铜量激增)，LME铜$13,920逼近$14,527历史高位。A股映射：通信、电子、光通信板块领涨，科创50周涨4.65%。</p>
+        <div class="flow">
+          <span class="node">AI算力投资(英伟达$400亿+)</span>
+          <span class="arrow">→</span>
+          <span class="node">存储/光通信/HBM需求</span>
+          <span class="arrow">→</span>
+          <span class="node">费城半导体新高</span>
+          <span class="arrow">→</span>
+          <span class="node">数据中心建设</span>
+          <span class="arrow">→</span>
+          <span class="node">铜需求激增</span>
+          <span class="arrow">→</span>
+          <span class="node">LME铜逼近历史高</span>
+        </div>
+        <div class="impact">
+          <span class="pill pill-up">▲ 半导体</span>
+          <span class="pill pill-up">▲ 铜/有色金属</span>
+          <span class="pill pill-up">▲ 光通信/CPO</span>
+          <span class="pill pill-up">▲ 存储芯片</span>
+        </div>
+        <div class="caveat">⚠ 反转条件：若AI资本开支增速放缓或出现重大泡沫信号(类似2000年)，估值将面临压力测试</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 资产分析表 -->
+  <div class="section page-break">
+    <div class="s-title"><span class="n">3</span>资产分析表</div>
+    <table class="asset-tbl">
+      <thead>
+        <tr>
+          <th>资产</th>
+          <th>近期水平</th>
+          <th>核心驱动链路</th>
+          <th>倾向判断</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="no-break">
+          <td><strong>黄金</strong></td>
+          <td>$4,734/oz</td>
+          <td>链路A：中东避险 + 通胀对冲<br>链路B：全球央行购金 + 美元走弱</td>
+          <td><span class="verdict-tag vt-up">偏多震荡</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>WTI原油</strong></td>
+          <td>$99/桶</td>
+          <td>链路A：美伊冲突→供应担忧 vs 谈判预期<br>周跌6%后反弹，双向博弈剧烈</td>
+          <td><span class="verdict-tag vt-flat">高位震荡</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>LME铜</strong></td>
+          <td>$13,920/吨</td>
+          <td>链路C：AI数据中心需求 + 供应紧缺<br>连涨6日，逼近$14,527历史高位</td>
+          <td><span class="verdict-tag vt-up">强势看涨</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>美元指数</strong></td>
+          <td>97.91</td>
+          <td>链路A：避险支撑 vs 法律风险(10%关税被判无效)<br>链路B：人民币升值施压</td>
+          <td><span class="verdict-tag vt-dn">偏弱</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>10Y美债</strong></td>
+          <td>4.41%</td>
+          <td>链路A：通胀预期推升 → 4月CPI今晚公布<br>降息预期落空，收益率高位运行</td>
+          <td><span class="verdict-tag vt-up">偏高震荡</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>沪深300</strong></td>
+          <td>4,960</td>
+          <td>链路B：政策宽松 + 访华预期<br>成交放量，但当日冲高回落</td>
+          <td><span class="verdict-tag vt-up">震荡偏多</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>科创50</strong></td>
+          <td>1,708</td>
+          <td>链路C：AI/半导体映射 + 链路B流动性<br>上周+4.65%创历史新高</td>
+          <td><span class="verdict-tag vt-up">强势</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>恒生科技</strong></td>
+          <td>5,109</td>
+          <td>链路B：访华预期 + 快手AI估值重塑<br>链路C：科技成长主线延续</td>
+          <td><span class="verdict-tag vt-up">偏多</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>标普500</strong></td>
+          <td>7,413</td>
+          <td>链路C：AI驱动的科技股独立行情<br>估值高位但动量强劲</td>
+          <td><span class="verdict-tag vt-up">趋势偏多·注意通胀风险</span></td>
+        </tr>
+        <tr class="no-break">
+          <td><strong>USD/CNH</strong></td>
+          <td>6.7935</td>
+          <td>链路B：央行宽松 + 访华缓和 + 美元走弱<br>人民币中间价连续上调</td>
+          <td><span class="verdict-tag vt-dn">人民币偏强</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. 热点时间轴 -->
+  <div class="section">
+    <div class="s-title"><span class="n">4</span>热点时间轴 (5月5日-5月12日)</div>
+    <div class="tl">
+      <div class="tl-item hot no-break">
+        <div class="tl-date">5月7日 (周三)</div>
+        <div class="tl-text">
+          <strong>央行一揽子政策</strong>：降准0.5%(5/15生效) + 降息10bp(5/8生效)，释放约1万亿长期流动性
+          <span class="tl-tag tg-pol">链路B</span>
+        </div>
+      </div>
+      <div class="tl-item hot no-break">
+        <div class="tl-date">5月7日 (周三)</div>
+        <div class="tl-text">
+          <strong>美伊冲突再升级</strong>：伊朗打击美舰 + 美空袭伊朗油轮，霍尔木兹海峡零星冲突
+          <span class="tl-tag tg-geo">链路A</span>
+        </div>
+      </div>
+      <div class="tl-item no-break">
+        <div class="tl-date">5月7日 (周三)</div>
+        <div class="tl-text">
+          <strong>美联储维持利率不变</strong>：3.5%-3.75%，8:4投票创34年最大分歧，鲍威尔最后一次FOMC
+          <span class="tl-tag tg-pol">链路A</span>
+        </div>
+      </div>
+      <div class="tl-item hot no-break">
+        <div class="tl-date">5月8日 (周四)</div>
+        <div class="tl-text">
+          <strong>法院裁定10%全球关税无效</strong>：美国国际贸易法院以2:1裁定122条关税非法，特朗普上诉
+          <span class="tl-tag tg-trd">链路B</span>
+        </div>
+      </div>
+      <div class="tl-item no-break">
+        <div class="tl-date">5月9日 (周五)</div>
+        <div class="tl-text">
+          <strong>USTR 301调查听证启动</strong>：对16个贸易伙伴工业产能过剩展开4天听证
+          <span class="tl-tag tg-trd">链路B</span>
+        </div>
+      </div>
+      <div class="tl-item hot no-break">
+        <div class="tl-date">5月11日 (周日)</div>
+        <div class="tl-text">
+          <strong>外交部宣布特朗普访华</strong>：5月13-15日国事访问，美国总统时隔9年再次访华
+          <span class="tl-tag tg-pol">链路B</span>
+        </div>
+      </div>
+      <div class="tl-item no-break">
+        <div class="tl-date">5月11日 (周一)</div>
+        <div class="tl-text">
+          <strong>美股三大指数再创新高</strong>：标普7413/纳指26274新高，英伟达$5.3万亿市值，费城半导体破12000
+          <span class="tl-tag tg-trd">链路C</span>
+        </div>
+      </div>
+      <div class="tl-item hot no-break">
+        <div class="tl-date">5月12日 (周二) 今晚20:30</div>
+        <div class="tl-text">
+          <strong>美国4月CPI公布</strong>：预期环比+0.6%/同比3.7%，核心CPI环比+0.4%/同比2.7%，关注能源向核心传导
+          <span class="tl-tag tg-geo">链路A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 情景推演与策略 -->
+  <div class="section page-break">
+    <div class="s-title"><span class="n">5</span>情景推演与策略</div>
+    <div class="scenario-grid">
+      <div class="scenario base no-break">
+        <h4>📊 基准情景</h4>
+        <div class="prob" style="color: var(--blue);">55%</div>
+        <div class="assume"><strong>前提假设：</strong>特朗普访华达成框架性共识(非突破性协议)；美伊维持边谈边打，油价$90-105区间震荡；4月CPI略高于预期但核心CPI可控；AI产业链维持高景气。</div>
+        <div class="s-label">受益资产</div>
+        <div class="impact">
+          <span class="pill pill-up">A股科技(电子/通信/AI)</span>
+          <span class="pill pill-up">铜/有色金属</span>
+          <span class="pill pill-up">港股科技</span>
+          <span class="pill pill-up">黄金(高位盘整)</span>
+        </div>
+        <div class="s-label">承压资产</div>
+        <div class="impact">
+          <span class="pill pill-dn">美元指数</span>
+          <span class="pill pill-dn">A股防御板块(煤炭/银行)</span>
+        </div>
+      </div>
+
+      <div class="scenario risk no-break">
+        <h4>⚠️ 风险情景</h4>
+        <div class="prob" style="color: var(--red);">25%</div>
+        <div class="assume"><strong>前提假设：</strong>美伊谈判彻底破裂，霍尔木兹海峡全面封锁；4月CPI大幅超预期(同比>4%)；特朗普访华期间释放强硬信号，301调查加速推进。</div>
+        <div class="s-label">受益资产</div>
+        <div class="impact">
+          <span class="pill pill-up">黄金(冲击$5000)</span>
+          <span class="pill pill-up">原油(冲击$120+)</span>
+          <span class="pill pill-up">美债(避险)</span>
+        </div>
+        <div class="s-label">承压资产</div>
+        <div class="impact">
+          <span class="pill pill-dn">全球股市回调</span>
+          <span class="pill pill-dn">工业金属</span>
+          <span class="pill pill-dn">新兴市场货币</span>
+        </div>
+      </div>
+
+      <div class="scenario bull no-break">
+        <h4>🚀 乐观情景</h4>
+        <div class="prob" style="color: var(--green);">20%</div>
+        <div class="assume"><strong>前提假设：</strong>美伊30天内达成正式协议，油价回落至$80以下；特朗普访华达成贸易突破(实质性降低关税)；CPI回落确认通胀见顶，美联储重启降息预期。</div>
+        <div class="s-label">受益资产</div>
+        <div class="impact">
+          <span class="pill pill-up">全球股市(估值扩张)</span>
+          <span class="pill pill-up">中国资产(A股/港股/人民币)</span>
+          <span class="pill pill-up">美元计价大宗商品</span>
+        </div>
+        <div class="s-label">承压资产</div>
+        <div class="impact">
+          <span class="pill pill-dn">黄金(避险溢价消退)</span>
+          <span class="pill pill-dn">原油(供应恢复)</span>
+          <span class="pill pill-dn">美元(降息预期)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verdict -->
+    <div class="verdict no-break">
+      <h3>📋 综合判断</h3>
+      <p><span class="highlight">格局定性：</span>全球资产处于「地缘风险高位 + AI产业牛市 + 中国政策宽松」三重叠加状态。市场呈现极端分化——美股/A股科技新高 vs 油价/金价避险品种同步走强，反映投资者同时在押注「增长」和「风险」。</p>
+      <p><span class="highlight">核心矛盾：</span>① 今晚4月CPI是本周定价锚——若通胀超预期确认"二次传导"，将重创降息预期；② 特朗普访华(5/13-15)是中美关系最大变量——9年来首次访华，预期管理极为关键。</p>
+      <p><span class="highlight">操作建议：</span>A股科技成长主线维持持有(通信/电子/半导体/AI)，但注意连续4天3万亿+成交后的短期调整风险。黄金/铜维持多头思维。回避高估值且缺乏基本面支撑的小盘题材股。密切关注今晚CPI数据和周三访华首日市场反应。</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>数据截止：2026年5月12日 10:30 CST · 本报告仅供参考，不构成投资建议</p>
+    <p>数据来源：Wind, Bloomberg, 东方财富, Trading Economics, 各央行官网</p>
+  </div>
+
+</div>
+</body>
+</html>
